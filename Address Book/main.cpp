@@ -21,19 +21,19 @@ int main()
 			addPerson(&ab); //由于要对通信录修改,所以使用传地址的方式传参
 			break;
 		case 2:
-			showPerson();
+			showPerson(ab);
 			break;
 		case 3:
-			deletePerson();
+			deletePerson(&ab);
 			break;
 		case 4:
-			findPerson();
+			findPerson(ab);
 			break;
 		case 5:
 			modifyPerson();
 			break;
 		case 6:
-			clearPerson();
+			clearPerson(&ab);
 			break;
 		case 0:
 			cout << "欢迎下次使用!" << endl;
