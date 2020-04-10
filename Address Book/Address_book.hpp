@@ -11,6 +11,7 @@ using std::string;
 //菜单界面
 void showMenu()
 {
+	cout << endl;
 	cout << "        通讯录        " << endl;
 	cout << "**********************" << endl;
 	cout << "***  1.添加联系人  ***" << endl;
@@ -21,6 +22,7 @@ void showMenu()
 	cout << "***  6.清除联系人  ***" << endl;
 	cout << "***  0.退出通讯录  ***"<< endl;
 	cout << "**********************" << endl;
+	cout << endl;
 }
 
 
@@ -67,7 +69,7 @@ void addPerson(Addressbook* ab)
 		{
 		cin >> gender;
 		//如果输入1或2就退出循环,否则提示输入有误
-		if (gender == 1 || gender == 2)
+		if (gender == 1 || gender == 0)
 		{
 			ab->_pArray[ab->_size]._gender = gender;
 			break;
@@ -82,28 +84,67 @@ void addPerson(Addressbook* ab)
 
 		cout << "请输入联系人电话:" << endl;
 		string telephone;
+		cin >> telephone;
+		ab->_pArray[ab->_size]._telephone = telephone;
+
+		cout << "请输入联系人地址:" << endl;
+		string address;
+		cin >> address;
+		ab->_pArray[ab->_size]._address=address;
+		ab->_size++;
 		
 	}
-
-
 }
 
 //2.显示联系人
-void showPerson()
+void showPerson(Addressbook ab)
 {
-
+	cout << "--------------------------------------------------------------------------------" << endl;
+	cout <<"序号|" << "\t姓名\t|" << "\t性别\t|" << "\t年龄\t|" << "\t电话\t|" << "\t地址\t|"<<endl;
+	cout << "--------------------------------------------------------------------------------" << endl;
+	for (int i = 0; i < ab._size; ++i)
+	{
+	string gender;
+	if (ab._pArray[i]._gender == 1)
+	{
+		gender = "女";
+	}
+	else
+	{
+		gender = "男";
+	}
+	cout <<" "<<i+1<<"  |\t" <<ab._pArray[i]._name <<"\t|\t"<<gender<<"\t|\t"
+		<<ab._pArray[i]._age<<"\t|\t"<<ab._pArray[i]._telephone<<"\t|\t"<<ab._pArray[i]._address<<"\t|"<< endl;
+	}
 }
 
 //3.删除联系人
-void deletePerson()
+void deletePerson(Addressbook* ab)
 {
+	if (ab->_size == 0)
+	{
+		cout << "通讯录为空,已经没有数据可以删除" << endl;
+	}
+	else
+	{
+		cout << "请输入需要删除联系人的序号:" << endl;
+		int num = 0;
+		cin >> num;
+		num = num - 1;
+		for (int i = num; num < ab->_size; ++num)
+		{
+			ab->_pArray[num] = ab->_pArray[num + 1];
+		}
+		ab->_size--;
 
+	}
 }
 
 //4.查找联系人
-void findPerson()
+void findPerson(Addressbook ab)
 {
-
+	cout << "请输入要查找的联系人姓名:" << endl;
+	
 }
 
 //5.修改联系人
@@ -113,7 +154,7 @@ void modifyPerson()
 }
 
 //6.清除联系人
-void clearPerson()
+void clearPerson(Addressbook* ab)
 {
-	
+	ab->_size = 0;
 }
