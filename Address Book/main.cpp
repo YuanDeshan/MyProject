@@ -30,7 +30,7 @@ int main()
 			findPerson(ab);
 			break;
 		case 5:
-			modifyPerson();
+			modifyPerson(&ab);
 			break;
 		case 6:
 			clearPerson(&ab);
