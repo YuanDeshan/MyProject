@@ -116,6 +116,7 @@ void showPerson(Addressbook ab)
 	cout <<" "<<i+1<<"  |\t" <<ab._pArray[i]._name <<"\t|\t"<<gender<<"\t|\t"
 		<<ab._pArray[i]._age<<"\t|\t"<<ab._pArray[i]._telephone<<"\t|\t"<<ab._pArray[i]._address<<"\t|"<< endl;
 	}
+	cout << "--------------------------------------------------------------------------------" << endl;
 }
 
 //3.删除联系人
@@ -123,7 +124,7 @@ void deletePerson(Addressbook* ab)
 {
 	if (ab->_size == 0)
 	{
-		cout << "通讯录为空,已经没有数据可以删除" << endl;
+		cout << "通讯录为空,无法进行删除" << endl;
 	}
 	else
 	{
@@ -144,11 +145,26 @@ void deletePerson(Addressbook* ab)
 void findPerson(Addressbook ab)
 {
 	cout << "请输入要查找的联系人姓名:" << endl;
-	
+	string name;
+	cin >> name;
+	for (int i=0;i<ab._size;++i)
+	{
+		if (name == ab._pArray[i]._name)
+		{
+			cout << "已找到" << endl;
+			Addressbook ab1;
+			ab1._pArray[0] = ab._pArray[i];
+			showPerson(ab1);
+		}
+		else
+		{
+			cout << "该联系人不存在" << endl;
+		}
+	}
 }
 
 //5.修改联系人
-void modifyPerson()
+void modifyPerson(Addressbook* ab)
 {
 
 }
