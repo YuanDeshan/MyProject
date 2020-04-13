@@ -166,10 +166,7 @@ void findPerson(Addressbook ab)
 	{
 		if (name == ab._pArray[i]._name)
 		{
-			cout << "已找到" << endl;
-			Addressbook ab1;
-			ab1._pArray[0] = ab._pArray[i];
-			showPerson(ab1);
+			cout << "已找到,该联系人的序号为" <<i+1<< endl;
 		}
 		else
 		{
@@ -235,6 +232,7 @@ void clearPerson(Addressbook* ab)
 		cout << "您确认要删除所有联系人吗?" << endl;
 		cout << "请输入yes or no 进行确认" << endl;
 		string select;
+		cin >> select;
 		if (select == "yes")
 		{
 			ab->_size = 0;
