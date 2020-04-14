@@ -44,6 +44,20 @@ struct Addressbook
 
 };
 
+//判空
+bool IsEmpty(Addressbook ab)
+{
+	if (ab._size == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
 //1.添加联系人
 void addPerson(Addressbook* ab)
 {
@@ -101,9 +115,9 @@ void addPerson(Addressbook* ab)
 //2.显示联系人
 void showPerson(Addressbook ab)
 {
-	if (ab._size == 0)
+	if (IsEmpty(ab))
 	{
-		cout << "通讯录为空" << endl;
+		cout << "通讯录为空!" << endl;
 	}
 	else
 	{
@@ -135,7 +149,7 @@ void showPerson(Addressbook ab)
 //3.删除联系人
 void deletePerson(Addressbook* ab)
 {
-	if (ab->_size == 0)
+	if (IsEmpty(*ab))
 	{
 		cout << "通讯录为空,无法进行删除" << endl;
 	}
@@ -226,11 +240,17 @@ void modifyPerson(Addressbook* ab)
 }
 
 
+
 //6.清除所有联系人
 void clearPerson(Addressbook* ab)
 {
-		cout << "您确认要删除所有联系人吗?" << endl;
-		cout << "请输入yes or no 进行确认" << endl;
+	if (IsEmpty(*ab))
+	{
+		cout << "通讯录为空!" << endl;
+	}
+	else
+	{
+		cout << "您确认要删除所有联系人吗?(输入 yes or no)" << endl;
 		string select;
 		cin >> select;
 		if (select == "yes")
@@ -242,7 +262,9 @@ void clearPerson(Addressbook* ab)
 		{
 			cout << "清除失败!" << endl;
 		}
-		system("pause");//请按任意键继续
-		system("cls");//清屏
+	}
+	system("pause");//请按任意键继续
+	system("cls");//清屏
 }
+
 
