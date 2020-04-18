@@ -24,3 +24,15 @@ WorkerMager::~WorkerMager()
 {
 
 }
+
+//设计联系人结构体
+struct Person
+{
+	string _name;
+	int _gender;
+	int _age;
+	string _phone;
+	string _address;
+};
+
+
