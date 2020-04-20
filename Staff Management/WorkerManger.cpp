@@ -1,11 +1,11 @@
 #include "WorkerManger.h"
 
-WorkerMager::WorkerMager()
+WorkerManger::WorkerManger()
 {
 
 }
 
-void WorkerMager::ShowMenu()
+void WorkerManger::ShowMenu()
 {
 	cout << "******************************" << endl;
 	cout << "*****欢迎使用职工管理系统*****" << endl;
@@ -20,10 +20,19 @@ void WorkerMager::ShowMenu()
 	cout << "******************************" << endl;
 }
 
-WorkerMager::~WorkerMager()
+WorkerManger::~WorkerManger()
 {
 
 }
+
+void WorkerManger::ExitSystem()
+{
+	cout << "欢迎下次使用！"<<endl;
+	system("pause");
+	exit(0); //退出整个程序
+}
+
+
 
 //设计联系人结构体
 struct Person
@@ -34,5 +43,7 @@ struct Person
 	string _phone;
 	string _address;
 };
+
+
 
 
